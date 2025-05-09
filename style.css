@@ -1,0 +1,243 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(45deg, #6aeb68, #2d8f39, #00b99f, #009a6b);
+  background-size: 400% 400%;
+  animation: gradientAnimation 7s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(72, 239, 148, 0.15);
+  animation: float 8s infinite ease-in-out;
+  z-index: 0;
+}
+
+.bubble:nth-child(1) { width: 100px; height: 100px; top: 10%; left: 5%; }
+.bubble:nth-child(2) { width: 150px; height: 150px; bottom: 20%; right: 10%; }
+.bubble:nth-child(3) { width: 80px; height: 80px; top: 50%; left: 80%; }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.card-container {
+  z-index: 1;
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.8s ease forwards;
+  transition: all 0.3s ease;
+  transform: translateY(-30px);
+}
+
+.card-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.heading-animate, .subheading-animate {
+  background: linear-gradient(90deg, #1e7e34, #28a745, #1e7e34);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shimmerText 3s linear infinite, slideUp 1s ease forwards;
+}
+
+.heading-animate {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+  animation-delay: 0.1s;
+  display: inline-block;
+  margin-left: -1px;
+}
+
+.subheading-animate {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  animation-delay: 0.1s;
+}
+
+@keyframes shimmerText {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input, button {
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 12px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s forwards;
+}
+
+input:nth-of-type(1) { animation-delay: 0.6s; }
+input:nth-of-type(2) { animation-delay: 0.8s; }
+button { animation-delay: 1s; }
+
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.result {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.success {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.fail {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+a {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+  color: #218838;
+  font-weight: 500;
+}
+
+@media (max-width: 576px) {
+  .card-container {
+    padding: 24px;
+    text-align: center;
+  }
+
+  .heading-animate {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .subheading-animate {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  input, button {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+.icon-container {
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+  font-size: 1.5rem;
+}
+
+.info-animate {
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500;
+  animation: slideUp 0.8s forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+  margin-top: -8px;
+  margin-bottom: 1rem;
+}
+
+.logo-kemenag {
+  width: 150px;
+  margin-bottom: 15px;
+  animation: slideUp 0.8s forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 1;
+}
+
+@media (max-width: 576px) {
+  .logo-kemenag {
+    width: 90px;
+    margin-bottom: 15px;
+  }
+}
+
+.card-container.expanded {
+  max-width: 520px; /* Lebih lebar dari default */
+  padding: 40px;
+  transition: all 0.4s ease;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s forwards;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 40%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #888;
+}
+
+
